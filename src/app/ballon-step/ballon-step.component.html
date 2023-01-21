@@ -1,0 +1,41 @@
+<mat-stepper orientation="vertical" [linear]="true" #stepper>
+  <mat-step [stepControl]="letterSection">
+    <form [formGroup]="letterSection">
+      <ng-template matStepLabel>Obálka</ng-template>
+      <p>Nejprve je potřeba vyzvednout obálku s pohlavím dítěte na gynekologii. Nevydají ho samozřejmě ale jen tak někomu.
+        Když jste se dostavili k okynku a dlouho prosili, svolili že pokud potvrdíte svojí oprávněnost znalostí rodných čísel obou rodičů,
+        obálku s tak citlivým údajem vám vydají.
+      </p>
+      <mat-form-field appearance="fill">
+        <mat-label>Součet obou rodných čísel</mat-label>
+        <input matInput placeholder="19258070722" formControlName="bornNum" required>
+        <mat-error *ngIf="!letterSection.hasError('pattern')">
+          Tak vám tedy tuto informaci vydat nemůžu.
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <div>
+        <button mat-button matStepperNext>Požádat o obálku</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="balloonSection">
+    <form [formGroup]="balloonSection">
+      <ng-template matStepLabel>Balónek</ng-template>
+      <p>Skvělé obálku s pohlavím už máme. Balónek s konfetami ale nemůže připravit nikdo z nás - připravil by se tím o překvapení.
+        Naštěstí se nabídnula paní z Kytice v Sedlčanech. Kamča už zbytek připraví, ale potřebuje se domluvit na času předání obálky.
+        Nemá ale číslo :( Zjistěte prosím číslo do kytice, Kamča už zbytek zařídí.
+      </p>
+      <mat-form-field appearance="fill">
+        <mat-label>Telefonní číslo</mat-label>
+        <input matInput placeholder="19258070722" formControlName="phoneNum" required>
+        <mat-error *ngIf="!letterSection.hasError('pattern')">
+          S tímhle telefonním číslem se Kamča do Kytice bohužel nedovolala :/
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button (click)="emitIfValid()">Poslat číslo Kamče</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-stepper>

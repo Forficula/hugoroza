@@ -1,0 +1,99 @@
+<img *ngIf="!animationHasEnded" class="balloon_size" src="assets/only_once.GIF">
+<ng-template [ngIf]="animationHasEnded">
+  <div>
+    <h1><b>NEEÉÉÉÉÉÉEE</b></h1>
+    <h2>Došli šípy a balónek se zdá být nenávratně pryč.</h2>
+    <h2>Jak teď zjistíme co bude náš potomek za pohlaví?</h2>
+  </div>
+</ng-template>
+
+<ng-template [ngIf]="leftToPanic">
+  <p>
+    Naštěstí je na párty příslušný fotograf který měl s sebou i dron. Všichni do aut! Bude sledovat balónek a navigovat nás.
+    Následujte itinerář a doufejme že se balónek zastaví dřív než nám dojde benzín. Vyrážíme od Garáže (Na Červeném Hrádku 1216 264 01 Sedlčany )
+  </p>
+  <ul>
+    <li>
+      Dejte se na sever
+      55 m
+    </li>
+
+    <li>
+      Odbočte doleva
+      350 m
+    </li>
+
+    <li>
+      Odbočte doleva na silnici 10522
+      270 m
+    </li>
+    <li>
+      Odbočte doprava na silnici 11438
+      450 m
+    </li>
+
+    <li>
+      Odbočte doprava na silnici 18
+      1,6 km
+    </li>
+
+    <li>
+      Z kruhového objezdu vyjeďte 4. výjezdem na Sedlecká/silnici 105
+      Pokračujte po silnici 105 a jeďte 7,4 km
+    </li>
+    <li>
+      odbočte mírně doprava a jeďte 5,6 km
+    </li>
+
+    <li>
+      Pokračujte po silnici 11825 1,1 km
+    </li>
+
+    <li>
+      Odbočte doprava na silnici 118 a jeďte 2,9 km
+    </li>
+
+    <li>
+      Po doražení do obce odbočte doleva
+      31 m
+    </li>
+
+    <li>
+      Odbočte znovu doleva
+      1,8 km
+    </li>
+
+    <li>
+      Odbočte doleva
+      800 m
+    </li>
+
+    <li>
+      Mírně doprava
+      3,2 km
+    </li>
+
+    <li>
+      Odbočte doprava
+      650 m
+    </li>
+
+    <li>
+      Odbočte doleva 400 m
+      Cíl bude vpravo
+    </li>
+  </ul>
+  <form class="example-form" [formGroup]="spotNameGroup">
+    <mat-form-field class="example-full-width">
+      <mat-label>Kde se to nacházíme</mat-label>
+      <input matInput formControlName="spotName"
+             placeholder="Praha">
+      <mat-error *ngIf="!spotNameGroup.hasError('pattern')">
+        Tady žádný balónek není, museli jsme zabloudit
+      </mat-error>
+    </mat-form-field>
+    <div>
+      <button mat-button (click)="emitIfValid()">Kouknout se po balónku</button>
+    </div>
+  </form>
+</ng-template>
